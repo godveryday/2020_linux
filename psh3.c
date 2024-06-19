@@ -19,6 +19,7 @@ int main()
     {   
         printf("$ ");
         scanf("%[^\n]s", argbuf);
+        while(getchar() != '\n');
         //printf("%s\n", argbuf);
 
         char *ptr = strtok(argbuf, " ");
@@ -26,7 +27,7 @@ int main()
 
         while(ptr != NULL)
         {
-            printf("%s\n", ptr);
+            //printf("%s\n", ptr);
             ptr = strtok(NULL, " ");
             arglist[numargs++] = ptr;
         }
@@ -59,9 +60,6 @@ int execute(char *arglist[])
             exit(1);
         default:
             while( wait(&exitstatus) != pid);
-            printf("child exited with status %d, %d\n",
-            exitstatus>>8, exitstatus & 0377);
-
     }
 }
 
